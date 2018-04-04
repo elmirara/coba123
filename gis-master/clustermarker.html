@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Latihan Google Map API</title>
+        <style>
+            #map {
+                background-color: gray;
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+    <script>
+        function initMap(){
+            var center = {lat: -5.3971396, lng: 105.2667887};
+            var map=new google.maps.Map(document.getElementById('map'),{zoom:3,center:center});
+            // console.log(map);
+            var labels = 'Bandar Lampung';
+        
+            var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+                }); 
+            console.log(locations);
+            console.log(markers);
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'images/m'});
+        
+            var d = markerCluster.distanceBetweenPoints_(markers[2].getPosition(),markers[4].getPosition());
+            console.log(markerCluster.getCalculator());
+            // var marker=new google.maps.Marker({position:center,map:map});
+            // console.log(marker);
+        }
+
+        var locations = [
+        {lat: -5.381262, lng: 105.2210641}, <!-- SPBU jalan Pramuka, rajabasa -->
+        {lat: -5.3590439, lng: 105.2341747}, <!-- SPBU Jalan By Pass Soekarno Hatta, Rajabasa raya -->
+        {lat: -5.3674773, lng: 105.2338153}, <!-- SPBU Jl. ZA Pagar Alam No.72, Rajabasa -->
+        {lat: -5.3680861, lng: 105.2332413}, <!-- SPBU Jl. Zaenal Abidin Pagar Alam, Rajabasa -->
+        {lat: -5.366831, lng: 105.2657282}, <!-- SPBU Jl. Soekarno - Hatta, Labuhan Ratu, Kedaton -->
+        {lat: -5.3884293, lng: 105.2883554}, <!-- SPBU Jl. Soekarno Hatta (bypass) No.256, Way Dadi, Sukarame -->
+        {lat: -5.3964616, lng: 105.2891493}, <!-- SPBU Jl. Soekarno - Hatta, Kalibalau Kencana,kedamaian -->
+        {lat: -5.3940049, lng: 105.2322435}, <!-- SPBU Jl. Imam Bonjol, Langkapura -->
+        {lat: -5.4141709, lng: 105.2468991},  <!-- SPBU Jl. Cut Nyak Dien, Kaliawi -->
+        {lat: -5.4216689, lng: 105.246942},  <!-- SPBU Jl. P. Emir Moh. Noer, Durian Payung -->
+        {lat: -5.4320933, lng: 105.2535081},  <!-- SPBU Jl. RW. Monginsidi, Pengajaran, North Teluk Betung -->
+        {lat: -5.444376, lng: 105.2662325},  <!-- SPBU Jl. Pattimura No.1, Kupang Kota, Tlk. Betung Utara -->
+        {lat: -5.4444401, lng: 105.2696872},  <!-- SPBU Jl. Sultan Hasanudin, Kangkung, Bumi Waras -->
+        {lat: -5.4231002, lng: 105.2712107}, <!-- SPBU Jl. Jend. Sudirman No.142, Pahoman, Engal -->
+        {lat: -5.4068651, lng: 105.2744079}, <!-- SPBU Jl. Pangeran Antasari No.96, Kedamaian -->
+        {lat: -5.3863571, lng: 105.2697301}, <!-- SPBU Jl. Ki Maja, Kedaton -->
+        {lat: -5.3827681, lng: 105.2587867}, <!-- SPBU Jalan ZAENAL ABIDIN PAGAR ALAM, Labuhan Ratu, Kedaton -->
+        {lat: -5.3589905, lng: 105.285244}, <!-- SPBU Jl. Ratu Dibalau, Way Kandis, Tj. Senang -->
+        {lat: -5.4493317, lng: 105.3040838}, <!-- SPBU Jl. Yos Sudarso No.12, Sukaraja, Bumi Waras -->
+        {lat: -5.4032389, lng: 105.2818751}, <!-- SPBU Jl. Pangeran Antasari No.89, Tj. Baru, Kedamaian -->
+        {lat: -5.420996, lng: 105.2524567}, <!-- SPBU Jl. Jenderal Ahmad Yani No.10, Palapa -->
+        {lat: -5.364005, lng: 105.2757858}, <!-- SPBU Jl. Ratu Dibalau, Tj. Senang -->
+        {lat: -5.3639202, lng: 105.2759112}  <!-- SPBU Jl. Ratu Dibalau No.35, Tj. Senang -->
+      ]
+    </script>
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIy-vX5tDUpnN5EUuIVG5fNeEuHWm3q4&callback=initMap"></script>
+    <script src="/src/markerclusterer.js">
+    </script>
+</html>
